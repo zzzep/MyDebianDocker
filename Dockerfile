@@ -18,7 +18,7 @@ RUN apt-get update && \
 	apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
 
-RUN /usr/sbin/php5enmod mcrypt && a2enmod rewrite && mkdir /bootstrap
+RUN /usr/sbin/php5enmod mcrypt && a2enmod rewrite && mkdir -p /bootstrap
 
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD start.sh /bootstrap/start.sh
