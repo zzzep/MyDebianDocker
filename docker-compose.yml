@@ -2,7 +2,6 @@ version: '2'
 services:
   debian_github_user:
     build: ./
-    dockerfile: dockerfile
     container_name: github_user
     restart: always
     networks:
