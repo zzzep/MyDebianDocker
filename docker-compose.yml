@@ -5,8 +5,11 @@ services:
     container_name: github_user
     networks:
       - docker-localhost
+    volumes:
+      - ~/Desktop/GitHubUsers:/var/www/html/GitHubUsers
     ports:
       - 80:80
       - 22:22
+    tty: true
 networks:
   docker-localhost:
