@@ -7,6 +7,10 @@ Provides a minimal debian base image with apache and php. Sets up the apache, ph
 To use this image, create a dockerfile, import this image and select your port, run apache forground process.
 If you wish to build on this image, you can do so without teh issue of having to restart apache as it does not start apache in the base image
 
+Before clone change text format to unix
+git config --global core.eol lf
+git config --global core.autocrlf input
+
 
 Create a new docker file
 
