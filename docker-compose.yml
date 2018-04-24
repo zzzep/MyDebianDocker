@@ -1,12 +1,12 @@
 version: '2'
 services:
-  github_user:
+  gfechio_developer:
     build: ./   
-    container_name: github_user
+    container_name: gfechio_developer
     networks:
       - docker-localhost
     volumes:
-      - ~/Desktop/GitHubUsers:/var/www/html/GitHubUsers
+      - ../:/var/www/html
     ports:
       - 80:80
       - 22:22

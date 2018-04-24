@@ -22,6 +22,7 @@ RUN apt-get install -y openssh-server
 RUN apt-get install -y supervisor
 RUN apt-get install -y bash
 RUN apt-get install -y git
+RUN apt-get install -y vim
 RUN apt-get -yq install \
 		apache2 \
 		php5 \
@@ -56,16 +57,8 @@ EXPOSE 22
 
 CMD /usr/bin/supervisord -n
 
-ADD bin/fix.sh /fix.sh
-#RUN /bin/bash fix.sh && rm /fix.sh
-
 EXPOSE 80
 ENTRYPOINT ["/bootstrap/start.sh"]
-
-#ADD ./composer.sh /sbin/composer.sh
-#ENTRYPOINT ["/sbin/composer.sh"] 
-
-#RUN cd /var/www/html/ && git clone https://github.com/zzzep/GitHubUsers && cd GitHubUsers && git pull && cp .env.example .env && php composer.phar update 
 
 # Define default command.
 CMD ["/my_init"]
