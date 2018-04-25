@@ -23,7 +23,7 @@ RUN apt-get install -y supervisor
 RUN apt-get install -y bash
 RUN apt-get install -y git
 RUN apt-get install -y vim
-RUN apt-get -yq install \
+RUN apt-get -y install \
 		apache2 \
 		php5 \
 		libapache2-mod-php5 \
@@ -37,6 +37,10 @@ RUN apt-get -yq install \
 		php5-mcrypt && \
 	apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
+
+#RUN add-apt-repository universe	
+RUN apt-get update
+RUN apt-get install -y php5-intl
 RUN /usr/sbin/php5enmod mcrypt && a2enmod rewrite && mkdir -p /bootstrap
 
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
