@@ -41,12 +41,15 @@ RUN apt-get -y install \
 #RUN add-apt-repository universe	
 RUN apt-get update
 RUN apt-get install -y php5-intl
+RUN apt-get install -y mysql-server
 RUN /usr/sbin/php5enmod mcrypt && a2enmod rewrite && mkdir -p /bootstrap
 
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD start.sh /bootstrap/start.sh
 RUN chmod 755 /bootstrap/start.sh && chown -R www-data:www-data /var/www/html
 ADD sshd.conf /etc/supervisor/conf.d/sshd.conf
+
+COPY ./my.cnf /etc/mysql/my.cnf
 
 # configure supervisor
 ADD ./supervisor/supervisord.conf /etc/supervisor/

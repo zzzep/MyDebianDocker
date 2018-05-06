@@ -1,15 +1,19 @@
 version: '2'
 services:
-  gfechio_developer:
+  gfechio_developer_2:
     build: ./   
-    container_name: gfechio_developer
+    container_name: gfechio_developer_2
     networks:
       - docker-localhost
     volumes:
       - ../:/var/www/html
+      - /var/lib/mysql
     ports:
       - 80:80
       - 22:22
+      - 3306:3306
     tty: true
+    environment:
+      - MYSQL_ROOT_HOST=*
 networks:
   docker-localhost:
